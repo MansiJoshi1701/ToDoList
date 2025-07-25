@@ -7,6 +7,8 @@ const ToDos = [
     {
         id: 2,
         task: "Do laundry",
-        isCompleted: false
+        isCompleted: true
     }
 ]
+
+export default ToDos;

@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-const Home = () => {
+const Home = ( {ToDos , addNewTodo} ) => {
 
     const [newTodo , setNewTodo] = useState('');
-
+    
 
     const addToDo = (e) => {
         e.preventDefault();
-        //add newToDo to the display list
+        addNewTodo(newTodo); //add newToDo to the display list        
         setNewTodo('');
     }
 
@@ -24,6 +24,22 @@ const Home = () => {
                 <button type="button" onClick={(e) => addToDo(e)}>Add To-Do</button>
             </span>
 
+            <div>
+                <ul>
+                    {
+                        ToDos.map((todoItem) => {
+                            return(
+                                <li 
+                                    key={todoItem.id} 
+                                    style = {{textDecoration: todoItem.isCompleted ? 'line-through' : 'none'}}
+                                >
+                                        {todoItem.task}
+                                </li>
+                            )
+                        })
+                    }
+                </ul>
+            </div>
 
         </div>
     )
