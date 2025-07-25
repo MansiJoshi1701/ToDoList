@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState , useEffect } from 'react'
 import Home from './components/Home'
 import ToDos from './data/data'
 import './App.css'
@@ -11,13 +11,26 @@ function App() {
   //function to add new ToDo item to the list
   const addNewTodo = (item) => {
 
-    const newToDo = {
-      id: Math.floor(Math.random * 100),
+    const newToDo = { //create a new ToDo item
+      id: Math.floor(Math.random() * 100), //assign a random ID
       task: item,
       isCompleted: false
     }
 
-    setData([...data , newToDo]);
+    setData([...data , newToDo]); //add the 'newToDo' to the existing 'data'
+  }
+
+  useEffect(() => {
+    console.log("Todos updated in useEffect:", data);
+  }, [data]); 
+
+  const updateStatus = (id) => {
+
+    setData(data.map((todo) => 
+
+      todo.id === id ? {...todo , isCompleted: !todo.isCompleted} : todo
+    )
+    )
   }
 
 
@@ -25,7 +38,7 @@ function App() {
     <>
       <div className="App">
         <h1>To-Do List</h1>
-        <Home ToDos={data}  addNewTodo={addNewTodo}/>
+        <Home ToDos={data}  addNewTodo={addNewTodo} updateStatus={updateStatus}/>
       </div>
     
     </>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Home = ( {ToDos , addNewTodo} ) => {
+const Home = ( {ToDos , addNewTodo , updateStatus} ) => {
 
     const [newTodo , setNewTodo] = useState('');
     
@@ -10,6 +10,7 @@ const Home = ( {ToDos , addNewTodo} ) => {
         addNewTodo(newTodo); //add newToDo to the display list        
         setNewTodo('');
     }
+
 
 
     return(
@@ -29,14 +30,15 @@ const Home = ( {ToDos , addNewTodo} ) => {
                     {
                         ToDos.map((todoItem) => {
                             return(
-                                <li 
-                                    key={todoItem.id} 
-                                    style = {{textDecoration: todoItem.isCompleted ? 'line-through' : 'none'}}
-                                >
-                                        {todoItem.task}
+                                <li key={todoItem.id}>
+
+                                    <input type="checkbox" onChange={() => updateStatus(todoItem.id)} checked={todoItem.isCompleted} />
+
+                                    <span style = {{textDecoration: todoItem.isCompleted ? 'line-through' : 'none'}}>{todoItem.task}</span>
+                                        
                                 </li>
                             )
-                        })
+                        }) 
                     }
                 </ul>
             </div>
