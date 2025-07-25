@@ -20,10 +20,7 @@ function App() {
     setData([...data , newToDo]); //add the 'newToDo' to the existing 'data'
   }
 
-  useEffect(() => {
-    console.log("Todos updated in useEffect:", data);
-  }, [data]); 
-
+  
   const updateStatus = (id) => {
 
     setData(data.map((todo) => 
