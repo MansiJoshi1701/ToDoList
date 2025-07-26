@@ -1,30 +1,20 @@
 import { useState } from "react";
 
-const Home = ( {ToDos , addNewTodo , updateStatus} ) => {
+const Home = ( {ToDos , updateStatus} ) => {
 
-    const [newTodo , setNewTodo] = useState('');
+    // const [newTodo , setNewTodo] = useState('');
     
 
-    const addToDo = (e) => {
-        e.preventDefault();
-        addNewTodo(newTodo); //add newToDo to the display list        
-        setNewTodo('');
-    }
+    // const addToDo = (e) => {
+    //     e.preventDefault();
+    //     addNewTodo(newTodo); //add newToDo to the display list        
+    //     setNewTodo('');
+    // }
 
 
 
     return(
-        <div>
-            <span>
-                <input 
-                    type="text" 
-                    onChange={(e) => setNewTodo(e.target.value)}
-                    value={newTodo}
-                    placeholder="Add new To-Do item"
-                />
-                <button type="button" onClick={(e) => addToDo(e)}>Add To-Do</button>
-            </span>
-
+        
             <div style={ { marginTop: 5 }}>
                 <ul>
                     {
@@ -37,10 +27,17 @@ const Home = ( {ToDos , addNewTodo , updateStatus} ) => {
                                     <span style = {{textDecoration: todoItem.isCompleted ? 'line-through' : 'none'}}>{todoItem.task}</span>
 
                                     <div style={{paddingLeft: 25}}>
+                                        <Home ToDos={todoItem.subtask} updateStatus={updateStatus} />
+                                        {
+                                            // todoItem.subtask.map((subItem) => {
 
-                                        <input type="checkbox" />
-                                        <span style = {{textDecoration: todoItem.subtask.isCompleted ? 'line-through' : 'none'}}>{todoItem.subtask.task}</span>
-                                        
+                                            //     return(
+                                            //         <Home key={subItem.id}  ToDos={subItem}  updateStatus={updateStatus} />
+                                            //     )
+
+                                            // })
+                                        }
+
                                     </div>
                                         
                                 </li>
@@ -50,7 +47,7 @@ const Home = ( {ToDos , addNewTodo , updateStatus} ) => {
                 </ul>
             </div>
 
-        </div>
+        
     )
 }
 

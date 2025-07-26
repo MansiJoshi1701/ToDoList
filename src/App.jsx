@@ -1,4 +1,5 @@
 import { useState , useEffect } from 'react'
+import InputBox from './components/InputBox'
 import Home from './components/Home'
 import ToDos from './data/data'
 import './App.css'
@@ -35,7 +36,8 @@ function App() {
     <>
       <div className="App">
         <h1>To-Do List</h1>
-        <Home ToDos={data}  addNewTodo={addNewTodo} updateStatus={updateStatus}/>
+        <InputBox addNewTodo={addNewTodo}/>
+        <Home ToDos={data}  updateStatus={updateStatus}/>
       </div>
     
     </>
