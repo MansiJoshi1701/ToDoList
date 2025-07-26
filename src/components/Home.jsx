@@ -16,11 +16,11 @@ const Home = ( {ToDos , updateStatus} ) => {
     return(
         
             <div style={ { marginTop: 5 }}>
-                <ul>
+                
                     {
                         ToDos.map((todoItem) => {
                             return(
-                                <li key={todoItem.id}>
+                                <div key={todoItem.id}>
 
                                     <input type="checkbox" onChange={() => updateStatus(todoItem.id)} checked={todoItem.isCompleted} />
 
@@ -40,11 +40,11 @@ const Home = ( {ToDos , updateStatus} ) => {
 
                                     </div>
                                         
-                                </li>
+                                </div>
                             )
                         }) 
                     }
-                </ul>
+                
             </div>
 
         
