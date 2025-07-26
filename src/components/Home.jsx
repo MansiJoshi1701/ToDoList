@@ -14,7 +14,7 @@ const Home = ( {ToDos , addNewTodo , updateStatus} ) => {
 
 
     return(
-        <div >
+        <div>
             <span>
                 <input 
                     type="text" 
@@ -25,7 +25,7 @@ const Home = ( {ToDos , addNewTodo , updateStatus} ) => {
                 <button type="button" onClick={(e) => addToDo(e)}>Add To-Do</button>
             </span>
 
-            <div>
+            <div style={ { marginTop: 5 }}>
                 <ul>
                     {
                         ToDos.map((todoItem) => {
@@ -35,6 +35,13 @@ const Home = ( {ToDos , addNewTodo , updateStatus} ) => {
                                     <input type="checkbox" onChange={() => updateStatus(todoItem.id)} checked={todoItem.isCompleted} />
 
                                     <span style = {{textDecoration: todoItem.isCompleted ? 'line-through' : 'none'}}>{todoItem.task}</span>
+
+                                    <div style={{paddingLeft: 25}}>
+
+                                        <input type="checkbox" />
+                                        <span style = {{textDecoration: todoItem.subtask.isCompleted ? 'line-through' : 'none'}}>{todoItem.subtask.task}</span>
+                                        
+                                    </div>
                                         
                                 </li>
                             )
